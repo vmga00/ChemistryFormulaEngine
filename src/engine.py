@@ -1,25 +1,47 @@
 from FormulaElement import *
 
-originalFromula = '2NaClH5O8'
 formula = []
 
 def main():
 	print('holi')
 	print('-----------------------------')
-	print('getting elemets from string: '+originalFromula)
-	formula = getFormulaArray(originalFromula)
-	formula = getFormulaElements(formula)
-	for i in formula:
-		print(i.__dict__)
+	equation = 'H2 + O -> H2O'
+	print('equation: '+equation)
 	print('-----------------------------')
+	print('getting reactives and products')
+	eq = getListFromString(equation,'->')
+	reactives = eq[0]
+	products = eq[1]
+	print('\treactives: '+ reactives)
+	print('\tproducts: ' + products)
 	print('-----------------------------')
-	print('-----------------------------')
+	print('get individual reactives')
+	reactives = getListFromString(reactives,'+')
+	for r in reactives:
+		print(' ',end=r)
+	print('\n\nget individual products')
+	products = getListFromString(products,'+')
+	for p in products:
+		print(' ',end=p)
+	print('\n-----------------------------')
+	print('getting elements and indexes...')
+	print('---reactives')
+	reactives = getFormulaElementsFromList(reactives)
+	for i in reactives:
+		for j in i:
+			print(j.__dict__)
+	print('\n---products')
+	products = getFormulaElementsFromList(products)
+	for i in products:
+		for j in i:
+			print(j.__dict__)
+	
 	print('-----------------------------')
 	print('-----------------------------')
 	print('byeee')
 
 def getFormulaArray(formula):
-	return list(formula)
+	return list(formula.replace(' ',''))
 
 def getFormulaCoeficient(formula):
 	if isinstance(formula,list):
@@ -30,7 +52,7 @@ def getFormulaElements(formula):
 	if isinstance(formula,list):
 		elements = []
 		formulaLength = len(formula)
-		index = 1
+		index = 0
 		while index < formulaLength:
 			symbol = ''
 			subindex = ''
@@ -55,7 +77,22 @@ def getFormulaElements(formula):
 			index+=1
 		return elements
 	else:
-		print('Check inputs for getElements')
+		print('Check inputs for getFormulaElements')
+
+def getListFromString(string,delimiter):
+	temp = []
+	temp = string.split(delimiter)
+	return temp
+
+def getFormulaElementsFromList(lista):
+	temp = []
+	for l in lista:
+		sublist = []
+		x = getFormulaElements(getFormulaArray(l))
+		for j in x:
+			sublist.append(j)
+		temp.append(sublist)
+	return temp
 
 if __name__ == '__main__':
 	main()
