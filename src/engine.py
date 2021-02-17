@@ -1,37 +1,43 @@
-formula='NaClH2O'
+originalFromula = '2NaClH2O'
+formula = []
 
 def main():
 	print('holi')
 	print('-----------------------------')
 	print('getting elemets from string')
-	getStringFormulaElements(formula)
+	formula = getFormulaArray(originalFromula)
+	formula = getStringFormulaElements(formula)
+	print('-----------------------------')
+	print('adding elements subindex')
+	#getElementsSubindex(formula)
+	print('-----------------------------')
+	print('-----------------------------')
+	print('-----------------------------')
 	print('-----------------------------')
 	print('byeee')
 
-def getStringFormulaElements(formula):
-	elements = []
-	stringLength = len(formula)
-	index = 0;
-	while(index<stringLength):
-		element = ''
-		char = formula[index]
-		nextChar=''
-		if index+1<stringLength:
-			nextChar=formula[index+1]
-			if char.isupper():
-				if nextChar.islower():
-					element=char+nextChar
-					index+=1
-		print(str(index)+'\t',end='')
-		if element!='':
-			print(element)
-			elements.append(element)
-		else:
-			print(char)
-		index+=1
-	
-	return elements
+def getFormulaArray(formula):
+	return list(formula)
 
+def getStringFormulaElements(formula):
+	if isinstance(formula, list):
+		elements = []
+		stringLength = len(formula)
+		index = 0
+		while index<stringLength:
+			element = ''
+			char = formula[index]
+			nextChar = ''
+			if index+1<stringLength:
+				 nextChar = formula[index+1]
+				 if char.isupper():
+				 	if nextChar.islower():
+				 		element = char+nextChar
+				 		index += 1
+			if element!='':
+				elements.append(element)
+			index += 1
+		return elements
 
 if __name__ == '__main__':
 	main()
