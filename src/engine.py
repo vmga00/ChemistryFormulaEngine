@@ -1,15 +1,17 @@
-originalFromula = '2NaClH2O'
+from FormulaElement import *
+
+originalFromula = '2NaClH5O8'
 formula = []
 
 def main():
 	print('holi')
 	print('-----------------------------')
-	print('getting elemets from string')
+	print('getting elemets from string: '+originalFromula)
 	formula = getFormulaArray(originalFromula)
-	formula = getStringFormulaElements(formula)
+	formula = getFormulaElements(formula)
+	for i in formula:
+		print(i.__dict__)
 	print('-----------------------------')
-	print('adding elements subindex')
-	#getElementsSubindex(formula)
 	print('-----------------------------')
 	print('-----------------------------')
 	print('-----------------------------')
@@ -19,25 +21,41 @@ def main():
 def getFormulaArray(formula):
 	return list(formula)
 
-def getStringFormulaElements(formula):
-	if isinstance(formula, list):
+def getFormulaCoeficient(formula):
+	if isinstance(formula,list):
+		if formula[0].isdigit():
+			return formula[0]		
+
+def getFormulaElements(formula):
+	if isinstance(formula,list):
 		elements = []
-		stringLength = len(formula)
-		index = 0
-		while index<stringLength:
-			element = ''
-			char = formula[index]
-			nextChar = ''
-			if index+1<stringLength:
-				 nextChar = formula[index+1]
-				 if char.isupper():
-				 	if nextChar.islower():
-				 		element = char+nextChar
-				 		index += 1
-			if element!='':
-				elements.append(element)
-			index += 1
+		formulaLength = len(formula)
+		index = 1
+		while index < formulaLength:
+			symbol = ''
+			subindex = ''
+			coefficient = ''
+			# check IF position is UPPERCASE or we are at LAST_ITEM of array
+			if formula[index].isupper() and index+1<formulaLength:
+				#check IF the NEXT position is LOWERCASE or NUMBER
+				if formula[index+1].islower() and index+2<formulaLength:
+					#check IF position AFTER_NEXT is NUMBER
+					if formula[index+2].isdigit():
+						subindex = formula[index+2]
+					symbol = formula[index] + formula[index+1]
+				else:
+					if formula[index+1].isdigit():
+						symbol = formula[index]
+						subindex = formula[index+1]
+			else:
+				if formula[index].isupper():
+					symbol = formula[index]
+			if symbol!='':
+				elements.append(FormulaElement(symbol, subindex))
+			index+=1
 		return elements
+	else:
+		print('Check inputs for getElements')
 
 if __name__ == '__main__':
 	main()
