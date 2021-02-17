@@ -1,10 +1,9 @@
 Requirements:
 
-- program should be able to read a chemistry formula from a given string
-- program should be able to recognize elements in given string
-- program should be able to recognize element's subindex
-- program should be able to recognize element's coeficient
-- program should be able to distinguish between products and reactives by using the '->' delimiter
-- program shuold be able to recognize multiple reactives
-- program should be able to recognize multiple products
--
+1- program should be able to read a chemistry formula from a given string
+2- program should be able to recognize elements in given string
+3- program should be able to recognize element's subindex
+4- program should be able to recognize element's coeficient
+5- program should be able to distinguish between products and reactives by using the '->' delimiter
+6- program shuold be able to recognize multiple reactives
+7- program should be able to recognize multiple products
