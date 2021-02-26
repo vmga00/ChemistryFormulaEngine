@@ -1,9 +1,15 @@
 from FormulaElement import *
+from periodicTable import *
 
 formula = []
 
 def main():
 	print('holi')
+	'''
+	print('-----------------------------')
+	for element in periodicTable:
+		print('{} {}'.format(periodicTable[element].symbol, periodicTable[element].weight))
+	'''
 	print('-----------------------------')
 	equation = 'H2 + O -> H2O'
 	print('equation: '+equation)
