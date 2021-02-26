@@ -7,3 +7,5 @@ Requirements:
 5- program should be able to distinguish between products and reactives by using the '->' delimiter
 6- program shuold be able to recognize multiple reactives
 7- program should be able to recognize multiple products
+8- program should hold the most commonly used chemistry elements
+9- program should be able to create simple element formulas eg. H2O, NaCl

@@ -1,5 +1,5 @@
 class Element:
-	def __init__(self,symbol, weight):
+	def __init__(self, symbol, weight):
 		self.symbol = symbol
 		self.weight = weight
 
@@ -8,3 +8,9 @@ class Element:
 		'symbol' : self.symbol,
 		'weight' : self.weight
 		}
+
+	def getSymbol():
+		return self.symbol
+
+	def getWeight():
+		return self.weight
